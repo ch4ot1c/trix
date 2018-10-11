@@ -45,10 +45,11 @@ This technique fully leverages regular expressions and pattern matching for rich
 
 **NOTE:** the version of `sed` pre-installed on macOS does not cleanly support in-place editing. Install `GNU sed` for that (`brew install gnu-sed`, run via `gsed`).
 
+**NOTE:** `bash` and other shells use 'globbing' for their wildcard behavior - this is not the same as regex, even though some symbols are shared!
+
 ### Examples -
 
-`sed` -
-Replace `OLD` with `NEW`:
+`sed` - Replace `OLD` with `NEW`:
 ```
 -BEGIN VERIFY SCRIPT-
 git grep --files-with-matches OLD src/*.cpp | xargs sed --in-place --regexp-extended 's/OLD/NEW/g'
@@ -56,7 +57,7 @@ git grep --files-with-matches OLD src/*.cpp | xargs sed --in-place --regexp-exte
 ```
 ~> Source: https://github.com/masonicboom/bitcoin/commit/d7ebeaf339a89077461bf32b664eed4b19ffbecb#diff-6a3371457528722a734f3c51d9238c13R136
 
-`sed`
+`sed`:
 ```
 -BEGIN VERIFY SCRIPT-
 git grep -l "push_back(Pair" | xargs sed -i "s/push_back(Pair(\(.*\)));/pushKV(\1);/g"
@@ -64,7 +65,7 @@ git grep -l "push_back(Pair" | xargs sed -i "s/push_back(Pair(\(.*\)));/pushKV(\
 ```
 ~> Source: https://github.com/bitcoin/bitcoin/commit/91986ed206fa830e5985560c6895b0d30b375054
 
-`perl`
+`perl`:
 ```
 -BEGIN VERIFY SCRIPT-
 find src/ -name "*.cpp" ! -wholename "src/util.h" ! -wholename "src/util.cpp" | xargs perl -i -pe 's/(?<!\.)(ParseParameters|ReadConfigFile|IsArgSet|(Soft|Force)?(Get|Set)(|Bool|)Arg(s)?)\(/gArgs.\1(/g'
