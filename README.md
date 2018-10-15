@@ -1,7 +1,31 @@
 # Node.js
 
 First, install the latest version of Node.js:
-` https://github.com/nodesource/distributions#installation-instructions`
+
+```
+ https://github.com/nodesource/distributions#installation-instructions
+```
+
+Examples:
+
+### EC2 Default (yum):
+```
+ sudo yum install gcc-c++ make
+ curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash 
+ sudo yum install -y nodejs
+```
+
+### Ubuntu (apt):
+```
+ curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+ sudo apt-get install -y nodejs
+```
+
+### Debian:
+```
+ curl -sL https://deb.nodesource.com/setup_10.x | bash -
+ apt-get install -y nodejs
+```
 
 ## Clean setup
 
