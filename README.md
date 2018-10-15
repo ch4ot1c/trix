@@ -19,6 +19,32 @@ First, install the latest version of Node.js:
 - Back on the command line, update your system variables:
 ` source ~/.profile`
 
+## Quick serve
+
+> **Serve file(s) quickly for use by any remote HTTP client.**
+
+- Install http-server globally:
+` npm install -g http-server pm2`
+
+- Then at any time,
+` pm2 start http-server yourFolder/ -- -d false -p 8080`
+
+- As long as port `8080` is open, the remote end can simply:
+` wget -r http://<your-ip>:8080/yourFolder`
+for the entire folder. Further subpaths reflect files therein.
+
+If disconnected, they can wrap up with `wget --continue ...`
+
+You can, alternatively, serve a directory listing by toggling the `-d` flag. This is less helpful for serving folders for download, since cluttersome `index.html` pages are added.
+
+Requires Node.js >= 8.12.0
+
+**Read more:** https://www.npmjs.com/package/http-server
+
+
+Credit: [@J62](https://github.com/interbiznw) 👔
+
+
 # Git
 
 ## Scripted Diffs
